@@ -6,7 +6,8 @@ console.log('✅ Nieuwe poging - API-key:', process.env.RESEND_API_KEY);
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();console.log('🚀 Mailpoging gestart');
+  const body = await req.json();console.log('🚀 Mailpoging gestart - Mauro');
+
 
   console.log('Ontvanger:', body.to);
   console.log('Onderwerp:', body.subject);
