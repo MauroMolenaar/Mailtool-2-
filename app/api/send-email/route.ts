@@ -4,18 +4,17 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
-  console.log('📨 Nieuwe mail poging');
-
   const body = await req.json();
 
-  console.log('🔑 API-key:', process.env.RESEND_API_KEY);
-  console.log('📬 Naar:', body.to);
-  console.log('📌 Onderwerp:', body.subject);
-  console.log('💬 Bericht:', body.message);
+  console.log('📨 Nieuwe mailpoging');
+  console.log('Ontvanger:', body.to);
+  console.log('Onderwerp:', body.subject);
+  console.log('Bericht:', body.message);
+  console.log('API KEY:', process.env.RESEND_API_KEY);
 
   try {
     const data = await resend.emails.send({
-      from: 'Mauro <noreply@mailtool.dev>',
+      from: 'noreply@mailtool.com',
       to: body.to,
       subject: body.subject,
       html: `<p>${body.message}</p>`,
